@@ -32,7 +32,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/DefaultValues.sol": "Var"
+			"contracts/Constants.sol": "Var"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -46,12 +46,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/DefaultValues.sol": {
-			"keccak256": "0x242236da27286336eebfe1feb168b3bc6701bc274b42e457846d647c48738d46",
+		"contracts/Constants.sol": {
+			"keccak256": "0x8853996361855660340faf64c4638a82cc970083a0bbf38b97d91d843d383a5f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2e18a06e4a050aaf8c1d28deefd7eec8b322b7a8a36578e4f1ba5184e1251488",
-				"dweb:/ipfs/Qmcc4KDeJ4kZMKJxdhq1kWou6VqHuYrizAKjLcymzkzVqX"
+				"bzz-raw://6d83ed1bc8de6723fbbccc69ba1393e11248b54c8823f10a093c70a78a1872bd",
+				"dweb:/ipfs/QmPKpf1j54scPbwwHQCNzGdamW2jRyUXLR1eN1PK1UN7sx"
 			]
 		}
 	},
