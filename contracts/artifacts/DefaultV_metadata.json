@@ -17,6 +17,19 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MY_UINT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -32,7 +45,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/DefaultValues.sol": "Var"
+			"contracts/DefaultValues.sol": "DefaultV"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -47,11 +60,11 @@
 	},
 	"sources": {
 		"contracts/DefaultValues.sol": {
-			"keccak256": "0x242236da27286336eebfe1feb168b3bc6701bc274b42e457846d647c48738d46",
+			"keccak256": "0xf9b3dd5ab36f7622a8f5d4a2e35e050186917ff8060fb528d4c1abdb9a39a6a3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2e18a06e4a050aaf8c1d28deefd7eec8b322b7a8a36578e4f1ba5184e1251488",
-				"dweb:/ipfs/Qmcc4KDeJ4kZMKJxdhq1kWou6VqHuYrizAKjLcymzkzVqX"
+				"bzz-raw://ff5c5d4ea60160fd7a8927f43f7bf38e70bc068c9e72979f171b0a6eeaf9c0e0",
+				"dweb:/ipfs/QmcFULaTVk5vYtqNP5y14DKhauNmigiw7qzcX7rL3i57xH"
 			]
 		}
 	},
