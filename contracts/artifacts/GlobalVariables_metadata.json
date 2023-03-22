@@ -7,15 +7,18 @@
 		"abi": [
 			{
 				"inputs": [],
-				"name": "foo",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "myUint",
+				"name": "globalVars",
 				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
 					{
 						"internalType": "uint256",
 						"name": "",
@@ -39,7 +42,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/StateVariables.sol": "StateVariables"
+			"contracts/GlobalVariables.sol": "GlobalVariables"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -53,12 +56,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/StateVariables.sol": {
-			"keccak256": "0x0df70498d47f72cb0708a55405ed387cac7bc43a3ec3ec0487d8edfc2e30a618",
+		"contracts/GlobalVariables.sol": {
+			"keccak256": "0xc0ce7df46879c00f6fd512656ad0b80eaabdf2e8ee599b18d811c43c6d10cd9e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1bd03ad502ff1cfefa75f44e17f8c1257cf000264e545a20b68036014f264ff4",
-				"dweb:/ipfs/QmdE87dAR3MNaS7JGa7VtERQbmHKGVP82tyE7x44ogXB8P"
+				"bzz-raw://89943c97e486e527cf210fad6a38896d2f9909879c686a76caa002b79ec09b8b",
+				"dweb:/ipfs/QmcNpohXibyYrZ5jGfJVhuCBcHGYtomJkqf4BYXpD6hpnB"
 			]
 		}
 	},
