@@ -12,6 +12,13 @@ contract ToDoList {
 // 如果要讓大家使用，每個人記錄自己的 task，可以怎麼設計？
 // 觀察原本的 gas 消耗狀況，改寫成更省 gas 的版本
 
+    mapping(bytes32 => mapping(address => bool)) public roles;
+
+    // 0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42
+    bytes32 private constant ADMIN = keccak256(abi.encodePacked("ADMIN"));
+    // 0x2db9fd3d099848027c2383d0a083396f6c41510d7acfd92adc99b6cffcf31e96
+    bytes32 private constant USER = keccak256(abi.encodePacked("USER"));
+
     constructor() payable {}
 
     struct Task {
@@ -21,7 +28,7 @@ contract ToDoList {
 
     Task[] tasks;
 
-    function create(string calldata name, bool completed) public {
+    function create(string calldata name, bool completed) public onlyRole(ADMIN) {
         tasks.push(Task(name, completed));
     }
 
@@ -30,16 +37,34 @@ contract ToDoList {
         _;
     }
 
-    function update(uint index, bool completed) public checkIndex(index) {
+    function update(uint index, bool completed) public checkIndex(index) onlyRole(ADMIN) {
         tasks[index].completed = completed;
     }
 
-    function get(uint index) public view checkIndex(index) returns(string memory name, bool completed) {
+    function get(uint index) public view checkIndex(index) onlyRole(ADMIN) returns(string memory name, bool completed) {
         Task memory task = tasks[index];
         return (task.name, task.completed);
     }
 
-    function kill() external {
-        selfdestruct(payable(msg.sender));
+    modifier ownerOnly() {
+        require(msg.sender == tx.origin);
+        _;
+    }
+
+    function kill() external ownerOnly {
+        selfdestruct(payable(tx.origin));
+    }
+
+    modifier onlyRole(bytes32 _role) {
+        require(roles[_role][msg.sender], "not authorized");
+        _;
+    }
+
+    function grantRole(bytes32 _role, address _account) external onlyRole(ADMIN) {
+        roles[_role][_account] = true;
+    }
+
+    function revokeRole(bytes32 _role, address _account) external onlyRole(ADMIN) {
+        roles[_role][_account] = false;
     }
 }
