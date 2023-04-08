@@ -26,23 +26,23 @@ contract ToDoList {
         bool completed;
     }
 
-    Task[] tasks;
+    mapping(address => Task[]) tasks;
 
-    function create(string calldata name, bool completed) public onlyRole(ADMIN) ownerOnly {
-        tasks.push(Task(name, completed));
+    function create(string calldata name, bool completed) public onlyAuthorize {
+        tasks[msg.sender].push(Task(name, completed));
     }
 
     modifier checkIndex(uint index) {
-        require(index < tasks.length);
+        require(index < tasks[msg.sender].length);
         _;
     }
 
-    function update(uint index, bool completed) public checkIndex(index) onlyRole(ADMIN) ownerOnly {
-        tasks[index].completed = completed;
+    function update(uint index, bool completed) public checkIndex(index) onlyAuthorize {
+        tasks[msg.sender][index].completed = completed;
     }
 
-    function get(uint index) public view checkIndex(index) onlyRole(ADMIN) ownerOnly returns(string memory name, bool completed) {
-        Task memory task = tasks[index];
+    function get(uint index) public view checkIndex(index) onlyAuthorize returns(string memory name, bool completed) {
+        Task memory task = tasks[msg.sender][index];
         return (task.name, task.completed);
     }
 
@@ -51,20 +51,25 @@ contract ToDoList {
         _;
     }
 
-    function kill() external ownerOnly {
+    function kill() external ownerOnly onlyAdmin {
         selfdestruct(payable(tx.origin));
     }
 
-    modifier onlyRole(bytes32 _role) {
-        require(roles[_role][msg.sender], "not authorized");
+    modifier onlyAuthorize() {
+        require(roles[ADMIN][msg.sender] || roles[USER][msg.sender], "not authorized");
         _;
     }
 
-    function grantRole(bytes32 _role, address _account) external onlyRole(ADMIN) ownerOnly {
+    modifier onlyAdmin() {
+        require(roles[ADMIN][msg.sender], "not authorized");
+        _;
+    }
+
+    function grantRole(bytes32 _role, address _account) external onlyAdmin {
         roles[_role][_account] = true;
     }
 
-    function revokeRole(bytes32 _role, address _account) external onlyRole(ADMIN) ownerOnly {
+    function revokeRole(bytes32 _role, address _account) external onlyAdmin {
         roles[_role][_account] = false;
     }
 }
