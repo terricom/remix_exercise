@@ -28,7 +28,7 @@ contract ToDoList {
 
     Task[] tasks;
 
-    function create(string calldata name, bool completed) public onlyRole(ADMIN) {
+    function create(string calldata name, bool completed) public onlyRole(ADMIN) ownerOnly {
         tasks.push(Task(name, completed));
     }
 
@@ -37,11 +37,11 @@ contract ToDoList {
         _;
     }
 
-    function update(uint index, bool completed) public checkIndex(index) onlyRole(ADMIN) {
+    function update(uint index, bool completed) public checkIndex(index) onlyRole(ADMIN) ownerOnly {
         tasks[index].completed = completed;
     }
 
-    function get(uint index) public view checkIndex(index) onlyRole(ADMIN) returns(string memory name, bool completed) {
+    function get(uint index) public view checkIndex(index) onlyRole(ADMIN) ownerOnly returns(string memory name, bool completed) {
         Task memory task = tasks[index];
         return (task.name, task.completed);
     }
@@ -60,11 +60,11 @@ contract ToDoList {
         _;
     }
 
-    function grantRole(bytes32 _role, address _account) external onlyRole(ADMIN) {
+    function grantRole(bytes32 _role, address _account) external onlyRole(ADMIN) ownerOnly {
         roles[_role][_account] = true;
     }
 
-    function revokeRole(bytes32 _role, address _account) external onlyRole(ADMIN) {
+    function revokeRole(bytes32 _role, address _account) external onlyRole(ADMIN) ownerOnly {
         roles[_role][_account] = false;
     }
 }

@@ -53,10 +53,70 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "_account",
+						"type": "address"
+					}
+				],
+				"name": "grantRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "kill",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_role",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "_account",
+						"type": "address"
+					}
+				],
+				"name": "revokeRole",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "roles",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -106,11 +166,11 @@
 	},
 	"sources": {
 		"contracts/ToDoList.sol": {
-			"keccak256": "0x2d4889d76b78cc17f46e05a8324c497c4e41f13b8cb2935a5c976dbe12ef4ace",
+			"keccak256": "0x2aa4a51142c5ce1dca4896a9cdbf69406f600fcbb8e480bbe1095a1ba492e743",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://915e83fe5f3a51aa4d6c36d2c8be0ec74051aa28f5440ef5580d8464428c06ab",
-				"dweb:/ipfs/Qmb5kQt955dXExM4WL71ZfBbRy7KxHhhxnUJV9b2YbANbs"
+				"bzz-raw://645a1f508b366bd5744a4f241ca7d20b1998d55a651c5770e42bb74b477c5a46",
+				"dweb:/ipfs/QmQHXUJkwCKuoxRqtmM92tWduCWVyeHHMfmy4PiaZehKUR"
 			]
 		}
 	},
