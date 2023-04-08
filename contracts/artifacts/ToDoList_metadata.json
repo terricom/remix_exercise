@@ -13,9 +13,28 @@
 			{
 				"inputs": [
 					{
+						"internalType": "bytes32",
+						"name": "_bytes32",
+						"type": "bytes32"
+					}
+				],
+				"name": "bytes32ToString",
+				"outputs": [
+					{
 						"internalType": "string",
-						"name": "name",
+						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "name",
+						"type": "bytes32"
 					},
 					{
 						"internalType": "bool",
@@ -166,11 +185,11 @@
 	},
 	"sources": {
 		"contracts/ToDoList.sol": {
-			"keccak256": "0xf2f1456f882caf452709b013140789064a070ceafb50e8a666689ab70f2baa10",
+			"keccak256": "0xcb653d441c3f955a1da2fb5dbfb795af795053dade040a9ea75bde43fb1febc1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://155f2a6f726b7449b55278a32933296d5007a9309e8a38ddec0f9f74a9d25e2f",
-				"dweb:/ipfs/QmXKxDCHRRnvX55bv2EviygXT2oLB7YpL8er6CYRY816cd"
+				"bzz-raw://636319b4eecc1ced7962035e3bcc5d8fe8f9af5d52ccdfe9c35d958dddb5f8fb",
+				"dweb:/ipfs/Qmf9oHyAeAj5GFhUPpX3D1j3Jdxf4rdXoX1KxS6MphwsPR"
 			]
 		}
 	},

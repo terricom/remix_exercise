@@ -13,22 +13,23 @@ contract ToDoList {
 // 觀察原本的 gas 消耗狀況，改寫成更省 gas 的版本
 
     mapping(bytes32 => mapping(address => bool)) public roles;
+    mapping(address => Task[]) tasks;
+
+    constructor() payable {
+        roles[ADMIN][msg.sender] = true;
+    }
+
+    struct Task {
+        bytes32 name;
+        bool completed;
+    }
 
     // 0xdf8b4c520ffe197c5343c6f5aec59570151ef9a492f2c624fd45ddde6135ec42
     bytes32 private constant ADMIN = keccak256(abi.encodePacked("ADMIN"));
     // 0x2db9fd3d099848027c2383d0a083396f6c41510d7acfd92adc99b6cffcf31e96
     bytes32 private constant USER = keccak256(abi.encodePacked("USER"));
 
-    constructor() payable {}
-
-    struct Task {
-        string name;
-        bool completed;
-    }
-
-    mapping(address => Task[]) tasks;
-
-    function create(string calldata name, bool completed) public onlyAuthorize {
+    function create(bytes32 name, bool completed) public onlyAuthorize {
         tasks[msg.sender].push(Task(name, completed));
     }
 
@@ -43,7 +44,19 @@ contract ToDoList {
 
     function get(uint index) public view checkIndex(index) onlyAuthorize returns(string memory name, bool completed) {
         Task memory task = tasks[msg.sender][index];
-        return (task.name, task.completed);
+        return (bytes32ToString(task.name), task.completed);
+    }
+
+    function bytes32ToString(bytes32 _bytes32) public pure returns (string memory) {
+        uint8 i = 0;
+        while(i < 32 && _bytes32[i] != 0) {
+            i++;
+        }
+        bytes memory bytesArray = new bytes(i);
+        for (i = 0; i < 32 && _bytes32[i] != 0; i++) {
+            bytesArray[i] = _bytes32[i];
+        }
+        return string(bytesArray);
     }
 
     modifier ownerOnly() {
