@@ -48,7 +48,7 @@ contract ERC20 is IERC20 {
     }
 
     function mint(uint amount) external payable {
-        balanceOf[msg.sender] -= amount;
+        balanceOf[msg.sender] += amount;
         totalSupply += amount;
         emit Transfer(address(0), msg.sender, amount);
     }
